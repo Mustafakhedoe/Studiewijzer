@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useMemo, useState } from "react";
 
 import {
@@ -785,9 +787,9 @@ export default function HBOStudiewijzer() {
 <Users className="h-5 w-5" /> Team
 </div>
 <div className="space-y-3 text-sm text-slate-600">
-<div className="rounded-2xl bg-slate-50 p-4">Studiekeuze specialisten</div>
-<div className="rounded-2xl bg-slate-50 p-4">UX en webdesign</div>
-<div className="rounded-2xl bg-slate-50 p-4">Onderwijs en digitale tools</div>
+<div className="rounded-2xl bg-slate-50 p-4">Mustafa Khedoe Full Stack Developer</div>
+<div className="rounded-2xl bg-slate-50 p-4">Leonard Zuiderwijk Back-end</div>
+<div className="rounded-2xl bg-slate-50 p-4">Kaya Gerling UX Design</div>
 </div>
 </Card>
 </section>

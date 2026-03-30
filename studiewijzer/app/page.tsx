@@ -33,8 +33,36 @@ import {
   Users,
 
 } from "lucide-react";
+
+type Study = {
+  id: number;
+  title: string;
+  school: string;
+  city: string;
+  match: string[];
+};
+
+type QuestionOption = {
+  value: string;
+  label: string;
+};
+
+type Question = {
+  id: number;
+  key: string;
+  title: string;
+  options: QuestionOption[];
+};
+
+type Answers = Record<string, string>;
+
+type QuestionCardProps = {
+  question: Question;
+  selected?: string;
+  onSelect: (key: string, value: string) => void;
+};
  
-const studies = [
+const studies: Study[] = [
 
   { id: 1, title: "HBO-ICT", school: "De Haagse Hogeschool", city: "Den Haag", match: ["ict", "software", "code", "logica", "praktisch", "tech", "ontwikkelen", "apps"] },
 
@@ -70,7 +98,7 @@ const studies = [
 
 ];
  
-const questions = [
+const questions: Question[] = [
 
   {
 
@@ -384,11 +412,26 @@ const questions = [
 
 ];
  
-function cx(...classes) {
+function cx(...classes: string[]) {
 
   return classes.filter(Boolean).join(" ");
 
 }
+
+type ButtonProps = React.PropsWithChildren<{
+  className?: string;
+  variant?: "default" | "secondary" | "outline" | "ghost";
+  type?: "button" | "submit" | "reset";
+}> &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "className" | "type">;
+
+type CardProps = React.PropsWithChildren<{
+  className?: string;
+}>;
+
+type BadgeProps = React.PropsWithChildren<{
+  className?: string;
+}>;
  
 function Button({
 
@@ -402,7 +445,7 @@ function Button({
 
   ...props
 
-}) {
+}: ButtonProps) {
 
   const variants = {
 
@@ -441,13 +484,13 @@ function Button({
 
 }
  
-function Card({ children, className = "" }) {
+function Card({ children, className = "" }: CardProps) {
 
   return <div className={cx("rounded-3xl bg-white shadow-sm", className)}>{children}</div>;
 
 }
  
-function Badge({ children, className = "" }) {
+function Badge({ children, className = "" }: BadgeProps) {
 
   return (
 <span
@@ -487,7 +530,7 @@ function ProgressBar({ value = 0 }) {
 
 }
  
-function QuestionCard({ question, selected, onSelect }) {
+function QuestionCard({ question, selected, onSelect }: QuestionCardProps) {
 
   return (
 <Card className="p-6 md:p-8">
@@ -533,7 +576,7 @@ export default function HBOStudiewijzer() {
 
   const [step, setStep] = useState(0);
 
-  const [answers, setAnswers] = useState({});
+  const [answers, setAnswers] = useState<Answers>({});
  
   const currentQuestion = questions[step];
 
@@ -563,7 +606,7 @@ export default function HBOStudiewijzer() {
 
   }, [answers]);
  
-  const selectAnswer = (key, value) => {
+  const selectAnswer = (key: string, value: string) => {
 
     setAnswers((prev) => ({ ...prev, [key]: value }));
 
@@ -621,7 +664,7 @@ export default function HBOStudiewijzer() {
  
       {page === "home" && (
 <main className="mx-auto max-w-6xl p-6 md:p-10">
-<section className="overflow-hidden rounded-[2rem] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 px-8 py-14 text-white shadow-2xl md:px-12 md:py-20">
+<section className="overflow-hidden rounded-4xl bg-linear-to-br from-slate-950 via-slate-900 to-slate-800 px-8 py-14 text-white shadow-2xl md:px-12 md:py-20">
 <div className="grid items-center gap-10 lg:grid-cols-2">
 <div>
 <Badge className="mb-4 bg-white/10 text-white">HBO Studie Wijzer Nederland</Badge>
@@ -748,7 +791,7 @@ export default function HBOStudiewijzer() {
  
       {page === "about" && (
 <main className="mx-auto max-w-6xl p-6 md:p-10">
-<section className="rounded-[2rem] bg-white p-8 shadow-sm md:p-12">
+<section className="rounded-4xl bg-white p-8 shadow-sm md:p-12">
 <Badge className="mb-4">About us</Badge>
 <h1 className="mb-4 text-4xl font-bold md:text-5xl">Over HBO Studie Wijzer</h1>
 <p className="max-w-3xl text-base leading-7 text-slate-600 md:text-lg">
@@ -827,7 +870,7 @@ export default function HBOStudiewijzer() {
 <div className="space-y-4">
 <input className="h-12 w-full rounded-2xl border border-slate-200 px-4 outline-none" placeholder="Jouw naam" />
 <input className="h-12 w-full rounded-2xl border border-slate-200 px-4 outline-none" placeholder="Jouw e-mail" />
-<textarea className="min-h-[140px] w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none" placeholder="Jouw bericht" />
+<textarea className="min-h-35 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none" placeholder="Jouw bericht" />
 <Button className="w-full">Verstuur bericht</Button>
 </div>
 </Card>

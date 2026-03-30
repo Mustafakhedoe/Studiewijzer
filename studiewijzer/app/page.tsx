@@ -449,13 +449,13 @@ function Button({
 
   const variants = {
 
-    default: "bg-slate-900 text-white hover:bg-slate-800",
+    default: "bg-teal-700 text-white hover:bg-teal-600",
 
-    secondary: "bg-white text-slate-900 hover:bg-slate-100",
+    secondary: "bg-amber-100 text-teal-900 hover:bg-amber-200",
 
-    outline: "border border-slate-300 bg-white text-slate-900 hover:bg-slate-50",
+    outline: "border border-teal-200 bg-white text-teal-900 hover:bg-teal-50",
 
-    ghost: "bg-transparent text-slate-900 hover:bg-slate-100",
+    ghost: "bg-transparent text-teal-900 hover:bg-teal-100",
 
   };
  
@@ -486,7 +486,7 @@ function Button({
  
 function Card({ children, className = "" }: CardProps) {
 
-  return <div className={cx("rounded-3xl bg-white shadow-sm", className)}>{children}</div>;
+  return <div className={cx("rounded-3xl bg-white/95 ring-1 ring-teal-100 shadow-sm", className)}>{children}</div>;
 
 }
  
@@ -497,7 +497,7 @@ function Badge({ children, className = "" }: BadgeProps) {
 
       className={cx(
 
-        "inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white",
+        "inline-flex items-center rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-teal-950",
 
         className
 
@@ -516,10 +516,10 @@ function ProgressBar({ value = 0 }) {
   const safeValue = Math.max(0, Math.min(100, value));
  
   return (
-<div className="h-3 w-40 overflow-hidden rounded-full bg-sky-100">
+<div className="h-3 w-40 overflow-hidden rounded-full bg-teal-100">
 <div
 
-        className="h-full rounded-full bg-linear-to-r from-cyan-500 to-blue-600 transition-all"
+        className="h-full rounded-full bg-linear-to-r from-teal-500 to-emerald-500 transition-all"
 
         style={{ width: `${safeValue}%` }}
 
@@ -533,8 +533,8 @@ function ProgressBar({ value = 0 }) {
 function QuestionCard({ question, selected, onSelect }: QuestionCardProps) {
 
   return (
-<Card className="border border-sky-100 bg-white/90 p-6 shadow-lg shadow-cyan-100/40 md:p-8">
-<h3 className="mb-6 text-2xl font-bold text-slate-800">{question.title}</h3>
+<Card className="border border-teal-100 bg-white/90 p-6 shadow-lg shadow-teal-100/50 md:p-8">
+<h3 className="mb-6 text-2xl font-bold text-teal-950">{question.title}</h3>
 <div className="grid gap-3 md:grid-cols-2">
 
         {question.options.map((option) => (
@@ -548,13 +548,13 @@ function QuestionCard({ question, selected, onSelect }: QuestionCardProps) {
 
             className={cx(
 
-              "rounded-2xl border p-4 text-left text-slate-700 transition",
+              "rounded-2xl border p-4 text-left text-teal-900 transition",
 
               selected === option.value
 
-                ? "border-cyan-500 bg-linear-to-r from-cyan-500 to-blue-600 text-white shadow-md"
+                ? "border-teal-500 bg-linear-to-r from-teal-500 to-emerald-500 text-white shadow-md"
 
-                : "border-slate-200 bg-white hover:border-cyan-300 hover:bg-cyan-50"
+                : "border-teal-100 bg-white hover:border-teal-300 hover:bg-teal-50"
 
             )}
 >
@@ -637,16 +637,16 @@ export default function HBOStudiewijzer() {
   const progressValue = quizDone ? 100 : ((step + 1) / questions.length) * 100;
  
   return (
-<div className="min-h-screen bg-slate-100 text-slate-900">
-<header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
+<div className="min-h-screen bg-linear-to-b from-amber-50 via-orange-50/40 to-teal-50 text-stone-900">
+<header className="sticky top-0 z-30 border-b border-teal-100 bg-white/85 backdrop-blur">
 <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
 <button type="button" onClick={() => setPage("home")} className="flex items-center gap-3 text-left">
-<div className="rounded-2xl bg-slate-900 p-2 text-white">
+<div className="rounded-2xl bg-linear-to-br from-teal-700 to-teal-600 p-2 text-white shadow-lg shadow-teal-200/60">
 <GraduationCap className="h-5 w-5" />
 </div>
 <div>
 <div className="text-sm font-semibold">HBO Studie Wijzer</div>
-<div className="text-xs text-slate-500">Nederland</div>
+<div className="text-xs text-teal-700/70">Nederland</div>
 </div>
 </button>
  
@@ -664,7 +664,7 @@ export default function HBOStudiewijzer() {
  
       {page === "home" && (
 <main className="mx-auto max-w-6xl p-6 md:p-10">
-<section className="overflow-hidden rounded-4xl bg-linear-to-br from-slate-950 via-slate-900 to-slate-800 px-8 py-14 text-white shadow-2xl md:px-12 md:py-20">
+<section className="overflow-hidden rounded-4xl bg-linear-to-br from-teal-900 via-emerald-800 to-teal-700 px-8 py-14 text-white shadow-2xl md:px-12 md:py-20">
 <div className="grid items-center gap-10 lg:grid-cols-2">
 <div>
 <Badge className="mb-4 bg-white/10 text-white">HBO Studie Wijzer Nederland</Badge>
@@ -672,7 +672,7 @@ export default function HBOStudiewijzer() {
 
                   Ontdek welke hbo-opleiding het beste bij jou past.
 </h1>
-<p className="mb-6 max-w-2xl text-base text-slate-300 md:text-lg">
+<p className="mb-6 max-w-2xl text-base text-teal-100 md:text-lg">
 
                   Doe de quiz met 15 vragen en krijg direct jouw top 3 beste hbo-opleidingen op basis van jouw interesses, manier van werken en toekomstplannen.
 </p>
@@ -688,45 +688,45 @@ export default function HBOStudiewijzer() {
 </div>
  
                 <div className="grid max-w-2xl gap-4 sm:grid-cols-3">
-<div className="rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur">
+<div className="rounded-3xl border border-white/15 bg-black/15 p-5 backdrop-blur">
 <div className="text-3xl font-bold">15</div>
-<div className="text-sm text-slate-200">Gerichte quizvragen</div>
+<div className="text-sm text-white/90">Gerichte quizvragen</div>
 </div>
-<div className="rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur">
+<div className="rounded-3xl border border-white/15 bg-black/15 p-5 backdrop-blur">
 <div className="text-3xl font-bold">Top 3</div>
-<div className="text-sm text-slate-200">Beste matches</div>
+<div className="text-sm text-white/90">Beste matches</div>
 </div>
-<div className="rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur">
+<div className="rounded-3xl border border-white/15 bg-black/15 p-5 backdrop-blur">
 <div className="text-3xl font-bold">Snel</div>
-<div className="text-sm text-slate-200">Direct je uitslag</div>
+<div className="text-sm text-white/90">Direct je uitslag</div>
 </div>
 </div>
 </div>
  
               <div className="grid gap-4 sm:grid-cols-2">
-<Card className="border border-white/10 bg-white/10 p-6 text-white shadow-xl backdrop-blur">
+<Card className="border border-white/15 bg-black/15 p-6 text-black shadow-xl backdrop-blur">
 <div className="mb-3 flex items-center gap-2 text-lg font-semibold">
 <Sparkles className="h-5 w-5" /> Wat je krijgt
 </div>
-<p className="text-sm text-slate-200">
+<p className="text-sm text-black/90">
 
                     Een simpele, moderne studiekeuze tool die je helpt sneller een richting te vinden die echt bij je past.
 </p>
 </Card>
-<Card className="border border-white/10 bg-white/10 p-6 text-white shadow-xl backdrop-blur">
+<Card className="border border-white/15 bg-black/15 p-6 text-black shadow-xl backdrop-blur">
 <div className="mb-3 flex items-center gap-2 text-lg font-semibold">
 <Target className="h-5 w-5" /> Focus
 </div>
-<p className="text-sm text-slate-200">
+<p className="text-sm text-black/90">
 
                     De quiz kijkt naar interesse, werkstijl en voorkeuren om opleidingen slimmer te rangschikken.
 </p>
 </Card>
-<Card className="border border-white/10 bg-white/10 p-6 text-white shadow-xl backdrop-blur sm:col-span-2">
-<div className="grid gap-3 text-sm text-slate-200 md:grid-cols-3">
-<div className="rounded-2xl bg-white/10 p-4">Persoonlijke uitslag op basis van jouw antwoorden</div>
-<div className="rounded-2xl bg-white/10 p-4">Duidelijke top 3 met school en stad</div>
-<div className="rounded-2xl bg-white/10 p-4">Makkelijk opnieuw te doen of aan te passen</div>
+<Card className="border border-white/15 bg-black/15 p-6 text-black shadow-xl backdrop-blur sm:col-span-2">
+<div className="grid gap-3 text-sm text-white/90 md:grid-cols-3">
+<div className="rounded-2xl bg-black/15 p-4 text-black">Persoonlijke uitslag op basis van jouw antwoorden</div>
+<div className="rounded-2xl bg-black/15 p-4 text-black">Duidelijke top 3 met school en stad</div>
+<div className="rounded-2xl bg-black/15 p-4 text-black">Makkelijk opnieuw te doen of aan te passen</div>
 </div>
 </Card>
 </div>
@@ -736,15 +736,15 @@ export default function HBOStudiewijzer() {
           <section className="mt-10 grid gap-6 md:grid-cols-3">
 <Card className="p-6">
 <h3 className="mb-2 text-lg font-semibold">1. Beantwoord de vragen</h3>
-<p className="text-sm text-slate-600">Kies per vraag het antwoord dat het best bij jou past. De quiz is snel en duidelijk opgezet.</p>
+<p className="text-sm text-stone-600">Kies per vraag het antwoord dat het best bij jou past. De quiz is snel en duidelijk opgezet.</p>
 </Card>
 <Card className="p-6">
 <h3 className="mb-2 text-lg font-semibold">2. Wij berekenen je match</h3>
-<p className="text-sm text-slate-600">De tool vergelijkt jouw antwoorden met passende studierichtingen en zet de beste matches bovenaan.</p>
+<p className="text-sm text-stone-600">De tool vergelijkt jouw antwoorden met passende studierichtingen en zet de beste matches bovenaan.</p>
 </Card>
 <Card className="p-6">
 <h3 className="mb-2 text-lg font-semibold">3. Zie jouw top 3</h3>
-<p className="text-sm text-slate-600">Je krijgt direct de drie opleidingen die het beste aansluiten op jouw profiel en interesses.</p>
+<p className="text-sm text-stone-600">Je krijgt direct de drie opleidingen die het beste aansluiten op jouw profiel en interesses.</p>
 </Card>
 </section>
  
@@ -754,21 +754,21 @@ export default function HBOStudiewijzer() {
 <BookOpen className="h-5 w-5" /> Waarom deze studiewijzer handig is
 </div>
 <div className="grid gap-4 md:grid-cols-2">
-<div className="rounded-2xl bg-slate-50 p-5">
+<div className="rounded-2xl bg-amber-50/80 p-5">
 <h4 className="mb-2 font-semibold">Snelle oriëntatie</h4>
-<p className="text-sm text-slate-600">Ideaal als je nog twijfelt tussen meerdere richtingen en eerst een duidelijk startpunt wilt hebben.</p>
+<p className="text-sm text-stone-600">Ideaal als je nog twijfelt tussen meerdere richtingen en eerst een duidelijk startpunt wilt hebben.</p>
 </div>
-<div className="rounded-2xl bg-slate-50 p-5">
+<div className="rounded-2xl bg-amber-50/80 p-5">
 <h4 className="mb-2 font-semibold">Geen overload</h4>
-<p className="text-sm text-slate-600">In plaats van meteen honderden opleidingen te tonen, krijg je eerst een heldere, persoonlijke selectie.</p>
+<p className="text-sm text-stone-600">In plaats van meteen honderden opleidingen te tonen, krijg je eerst een heldere, persoonlijke selectie.</p>
 </div>
-<div className="rounded-2xl bg-slate-50 p-5">
+<div className="rounded-2xl bg-amber-50/80 p-5">
 <h4 className="mb-2 font-semibold">Gebouwd voor overzicht</h4>
-<p className="text-sm text-slate-600">De site laat per match snel zien welke school, stad en richting bij de opleiding horen.</p>
+<p className="text-sm text-stone-600">De site laat per match snel zien welke school, stad en richting bij de opleiding horen.</p>
 </div>
-<div className="rounded-2xl bg-slate-50 p-5">
+<div className="rounded-2xl bg-amber-50/80 p-5">
 <h4 className="mb-2 font-semibold">Makkelijk opnieuw te doen</h4>
-<p className="text-sm text-slate-600">Twijfel je tussen twee kanten? Dan kun je de quiz opnieuw invullen en verschillende resultaten vergelijken.</p>
+<p className="text-sm text-stone-600">Twijfel je tussen twee kanten? Dan kun je de quiz opnieuw invullen en verschillende resultaten vergelijken.</p>
 </div>
 </div>
 </Card>
@@ -777,10 +777,10 @@ export default function HBOStudiewijzer() {
 <div className="mb-4 flex items-center gap-2 text-xl font-semibold">
 <Users className="h-5 w-5" /> Voor wie is dit?
 </div>
-<div className="space-y-4 text-sm text-slate-600">
-<div className="rounded-2xl bg-slate-50 p-4">Voor scholieren die nog geen duidelijke studiekeuze hebben gemaakt.</div>
-<div className="rounded-2xl bg-slate-50 p-4">Voor mbo-studenten die willen doorstromen naar het hbo.</div>
-<div className="rounded-2xl bg-slate-50 p-4">Voor iedereen die een snelle en moderne eerste studiekeuze-check wil doen.</div>
+<div className="space-y-4 text-sm text-stone-600">
+<div className="rounded-2xl bg-amber-50/80 p-4">Voor scholieren die nog geen duidelijke studiekeuze hebben gemaakt.</div>
+<div className="rounded-2xl bg-amber-50/80 p-4">Voor mbo-studenten die willen doorstromen naar het hbo.</div>
+<div className="rounded-2xl bg-amber-50/80 p-4">Voor iedereen die een snelle en moderne eerste studiekeuze-check wil doen.</div>
 <Button className="w-full" onClick={startQuiz}>Doe direct de quiz</Button>
 </div>
 </Card>
@@ -794,7 +794,7 @@ export default function HBOStudiewijzer() {
 <section className="rounded-4xl bg-white p-8 shadow-sm md:p-12">
 <Badge className="mb-4">About us</Badge>
 <h1 className="mb-4 text-4xl font-bold md:text-5xl">Over HBO Studie Wijzer</h1>
-<p className="max-w-3xl text-base leading-7 text-slate-600 md:text-lg">
+<p className="max-w-3xl text-base leading-7 text-stone-600 md:text-lg">
 
               HBO Studie Wijzer is gemaakt om studiekiezers op een simpele en moderne manier te helpen bij het vinden van een passende hbo-opleiding. In plaats van direct te verdwalen in grote lijsten met opleidingen, begin je hier met een quiz die jouw interesses en voorkeuren omzet in duidelijke matches.
 </p>
@@ -806,21 +806,21 @@ export default function HBOStudiewijzer() {
 <MessageCircle className="h-5 w-5" /> Onze missie
 </div>
 <div className="grid gap-4 md:grid-cols-2">
-<div className="rounded-2xl bg-slate-50 p-5">
+<div className="rounded-2xl bg-amber-50/80 p-5">
 <h4 className="mb-2 font-semibold">Duidelijkheid geven</h4>
-<p className="text-sm text-slate-600">Wij willen studiekeuze minder verwarrend maken door complexe informatie terug te brengen naar een logische eerste stap.</p>
+<p className="text-sm text-stone-600">Wij willen studiekeuze minder verwarrend maken door complexe informatie terug te brengen naar een logische eerste stap.</p>
 </div>
-<div className="rounded-2xl bg-slate-50 p-5">
+<div className="rounded-2xl bg-amber-50/80 p-5">
 <h4 className="mb-2 font-semibold">Betere start</h4>
-<p className="text-sm text-slate-600">De site helpt gebruikers sneller richting te kiezen, zodat ze daarna gerichter opleidingen kunnen vergelijken.</p>
+<p className="text-sm text-stone-600">De site helpt gebruikers sneller richting te kiezen, zodat ze daarna gerichter opleidingen kunnen vergelijken.</p>
 </div>
-<div className="rounded-2xl bg-slate-50 p-5">
+<div className="rounded-2xl bg-amber-50/80 p-5">
 <h4 className="mb-2 font-semibold">Toegankelijk voor iedereen</h4>
-<p className="text-sm text-slate-600">Een overzichtelijke quiz en simpele interface maken de site makkelijk te gebruiken voor veel verschillende studenten.</p>
+<p className="text-sm text-stone-600">Een overzichtelijke quiz en simpele interface maken de site makkelijk te gebruiken voor veel verschillende studenten.</p>
 </div>
-<div className="rounded-2xl bg-slate-50 p-5">
+<div className="rounded-2xl bg-amber-50/80 p-5">
 <h4 className="mb-2 font-semibold">Modern en praktisch</h4>
-<p className="text-sm text-slate-600">Geen moeilijke teksten, maar een directe aanpak met bruikbare resultaten en een duidelijke top 3.</p>
+<p className="text-sm text-stone-600">Geen moeilijke teksten, maar een directe aanpak met bruikbare resultaten en een duidelijke top 3.</p>
 </div>
 </div>
 </Card>
@@ -829,10 +829,10 @@ export default function HBOStudiewijzer() {
 <div className="mb-4 flex items-center gap-2 text-xl font-semibold">
 <Users className="h-5 w-5" /> Team
 </div>
-<div className="space-y-3 text-sm text-slate-600">
-<div className="rounded-2xl bg-slate-50 p-4">Mustafa Khedoe Full Stack Developer</div>
-<div className="rounded-2xl bg-slate-50 p-4">Leonard Zuiderwijk Back-end</div>
-<div className="rounded-2xl bg-slate-50 p-4">Kaya Gerling UX Design</div>
+<div className="space-y-3 text-sm text-stone-600">
+<div className="rounded-2xl bg-amber-50/80 p-4">Mustafa Khedoe Full Stack Developer</div>
+<div className="rounded-2xl bg-amber-50/80 p-4">Leonard Zuiderwijk Back-end</div>
+<div className="rounded-2xl bg-amber-50/80 p-4">Kaya Gerling UX Design</div>
 </div>
 </Card>
 </section>
@@ -840,25 +840,25 @@ export default function HBOStudiewijzer() {
           <section className="mt-8 grid gap-6 md:grid-cols-2">
 <Card className="p-6">
 <h3 className="mb-4 text-xl font-semibold">Contacten</h3>
-<div className="space-y-4 text-sm text-slate-600">
-<div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
-<Mail className="h-5 w-5 text-slate-900" />
+<div className="space-y-4 text-sm text-stone-600">
+<div className="flex items-center gap-3 rounded-2xl bg-amber-50/80 p-4">
+<Mail className="h-5 w-5 text-teal-900" />
 <div>
-<div className="font-medium text-slate-900">E-mail</div>
+<div className="font-medium text-teal-900">E-mail</div>
 <div>info@hbostudiewijzer.nl</div>
 </div>
 </div>
-<div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
-<Phone className="h-5 w-5 text-slate-900" />
+<div className="flex items-center gap-3 rounded-2xl bg-amber-50/80 p-4">
+<Phone className="h-5 w-5 text-teal-900" />
 <div>
-<div className="font-medium text-slate-900">Telefoon</div>
+<div className="font-medium text-teal-900">Telefoon</div>
 <div>+31 70 123 45 67</div>
 </div>
 </div>
-<div className="flex items-center gap-3 rounded-2xl bg-slate-50 p-4">
-<MapPin className="h-5 w-5 text-slate-900" />
+<div className="flex items-center gap-3 rounded-2xl bg-amber-50/80 p-4">
+<MapPin className="h-5 w-5 text-teal-900" />
 <div>
-<div className="font-medium text-slate-900">Adres</div>
+<div className="font-medium text-teal-900">Adres</div>
 <div>Den Haag, Nederland</div>
 </div>
 </div>
@@ -868,9 +868,9 @@ export default function HBOStudiewijzer() {
             <Card className="p-6">
 <h3 className="mb-4 text-xl font-semibold">Stuur ons een bericht</h3>
 <div className="space-y-4">
-<input className="h-12 w-full rounded-2xl border border-slate-200 px-4 outline-none" placeholder="Jouw naam" />
-<input className="h-12 w-full rounded-2xl border border-slate-200 px-4 outline-none" placeholder="Jouw e-mail" />
-<textarea className="min-h-35 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none" placeholder="Jouw bericht" />
+<input className="h-12 w-full rounded-2xl border border-teal-100 px-4 outline-none" placeholder="Jouw naam" />
+<input className="h-12 w-full rounded-2xl border border-teal-100 px-4 outline-none" placeholder="Jouw e-mail" />
+<textarea className="min-h-35 w-full rounded-2xl border border-teal-100 px-4 py-3 outline-none" placeholder="Jouw bericht" />
 <Button className="w-full">Verstuur bericht</Button>
 </div>
 </Card>
@@ -880,11 +880,11 @@ export default function HBOStudiewijzer() {
       )}
  
       {page === "quiz" && (
-    <main className="mx-auto max-w-5xl rounded-4xl border border-sky-100 bg-linear-to-br from-white via-sky-50/70 to-cyan-50/70 p-6 shadow-sm md:p-8">
+    <main className="mx-auto max-w-5xl rounded-4xl border border-teal-100 bg-linear-to-br from-white via-amber-50/70 to-teal-50/70 p-6 shadow-sm md:p-8">
     <div className="mb-6 flex items-center justify-between gap-4 rounded-3xl bg-white/80 p-4">
 <div>
-    <h2 className="text-2xl font-bold text-slate-800">Studiekeuze Quiz</h2>
-    <p className="text-sm text-slate-600">Beantwoord alle 15 vragen voor je uitslag</p>
+    <h2 className="text-2xl font-bold text-teal-950">Studiekeuze Quiz</h2>
+    <p className="text-sm text-stone-600">Beantwoord alle 15 vragen voor je uitslag</p>
 </div>
 <ProgressBar value={progressValue} />
 </div>
@@ -906,14 +906,14 @@ export default function HBOStudiewijzer() {
 
                   variant="outline"
 
-                  className="border-cyan-200 bg-white text-slate-700 hover:bg-cyan-50"
+                  className="border-teal-200 bg-white text-teal-900 hover:bg-teal-50"
 
                   onClick={() => (step === 0 ? setPage("home") : setStep((s) => s - 1))}
 >
 <ArrowLeft className="h-4 w-4" /> {step === 0 ? "Home" : "Vorige"}
 </Button>
  
-                <Button className="bg-linear-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-600 hover:to-blue-700" disabled={!canContinue} onClick={() => setStep((s) => s + 1)}>
+                <Button className="bg-linear-to-r from-teal-500 to-emerald-500 text-white hover:from-teal-600 hover:to-emerald-600" disabled={!canContinue} onClick={() => setStep((s) => s + 1)}>
 
                   Volgende <ArrowRight className="h-4 w-4" />
 </Button>
@@ -923,31 +923,31 @@ export default function HBOStudiewijzer() {
           ) : (
 <div>
 <div className="mb-6 flex items-center justify-between gap-4">
-<h3 className="text-3xl font-bold text-slate-800">Beste opleidingen voor jou</h3>
-<Button variant="outline" className="border-cyan-200 bg-white text-slate-700 hover:bg-cyan-50" onClick={() => setPage("home")}>Terug naar home</Button>
+<h3 className="text-3xl font-bold text-teal-950">Beste opleidingen voor jou</h3>
+<Button variant="outline" className="border-teal-200 bg-white text-teal-900 hover:bg-teal-50" onClick={() => setPage("home")}>Terug naar home</Button>
 </div>
  
               <div className="grid gap-4 md:grid-cols-2">
 
                 {scoredStudies.slice(0, 3).map((study, index) => (
-<Card key={study.id} className="border border-sky-100 bg-white/95 p-5 shadow-md shadow-cyan-100/40">
+<Card key={study.id} className="border border-teal-100 bg-white/95 p-5 shadow-md shadow-teal-100/50">
 <div className="mb-3 flex items-center justify-between">
-<Badge className="bg-cyan-600">#{index + 1} Match</Badge>
-<span className="text-sm font-semibold text-slate-500">{study.score} pt</span>
+<Badge className="bg-teal-600">#{index + 1} Match</Badge>
+<span className="text-sm font-semibold text-stone-500">{study.score} pt</span>
 </div>
 <h4 className="text-lg font-semibold">{study.title}</h4>
-<p className="text-sm text-slate-600">{study.school}</p>
-<p className="mt-1 text-sm text-slate-500">{study.city}</p>
+<p className="text-sm text-stone-600">{study.school}</p>
+<p className="mt-1 text-sm text-stone-500">{study.city}</p>
 </Card>
 
                 ))}
 </div>
  
               <div className="mt-6 flex gap-3">
-<Button className="bg-linear-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-600 hover:to-blue-700" onClick={restartQuiz}>
+<Button className="bg-linear-to-r from-teal-500 to-emerald-500 text-white hover:from-teal-600 hover:to-emerald-600" onClick={restartQuiz}>
 <RefreshCcw className="h-4 w-4" /> Opnieuw doen
 </Button>
-<Button variant="outline" className="border-cyan-200 bg-white text-slate-700 hover:bg-cyan-50" onClick={() => setPage("home")}>Home</Button>
+<Button variant="outline" className="border-teal-200 bg-white text-teal-900 hover:bg-teal-50" onClick={() => setPage("home")}>Home</Button>
 </div>
 </div>
 
@@ -962,3 +962,4 @@ export default function HBOStudiewijzer() {
 }
 
  
+

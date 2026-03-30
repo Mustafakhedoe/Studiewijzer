@@ -516,10 +516,10 @@ function ProgressBar({ value = 0 }) {
   const safeValue = Math.max(0, Math.min(100, value));
  
   return (
-<div className="h-3 w-40 overflow-hidden rounded-full bg-slate-200">
+<div className="h-3 w-40 overflow-hidden rounded-full bg-sky-100">
 <div
 
-        className="h-full rounded-full bg-slate-900 transition-all"
+        className="h-full rounded-full bg-linear-to-r from-cyan-500 to-blue-600 transition-all"
 
         style={{ width: `${safeValue}%` }}
 
@@ -533,8 +533,8 @@ function ProgressBar({ value = 0 }) {
 function QuestionCard({ question, selected, onSelect }: QuestionCardProps) {
 
   return (
-<Card className="p-6 md:p-8">
-<h3 className="mb-6 text-2xl font-bold">{question.title}</h3>
+<Card className="border border-sky-100 bg-white/90 p-6 shadow-lg shadow-cyan-100/40 md:p-8">
+<h3 className="mb-6 text-2xl font-bold text-slate-800">{question.title}</h3>
 <div className="grid gap-3 md:grid-cols-2">
 
         {question.options.map((option) => (
@@ -548,13 +548,13 @@ function QuestionCard({ question, selected, onSelect }: QuestionCardProps) {
 
             className={cx(
 
-              "rounded-2xl border p-4 text-left transition",
+              "rounded-2xl border p-4 text-left text-slate-700 transition",
 
               selected === option.value
 
-                ? "border-slate-900 bg-slate-900 text-white"
+                ? "border-cyan-500 bg-linear-to-r from-cyan-500 to-blue-600 text-white shadow-md"
 
-                : "border-slate-200 bg-white hover:border-slate-400"
+                : "border-slate-200 bg-white hover:border-cyan-300 hover:bg-cyan-50"
 
             )}
 >
@@ -880,11 +880,11 @@ export default function HBOStudiewijzer() {
       )}
  
       {page === "quiz" && (
-<main className="mx-auto max-w-5xl p-6">
-<div className="mb-6 flex items-center justify-between gap-4">
+    <main className="mx-auto max-w-5xl rounded-4xl border border-sky-100 bg-linear-to-br from-white via-sky-50/70 to-cyan-50/70 p-6 shadow-sm md:p-8">
+    <div className="mb-6 flex items-center justify-between gap-4 rounded-3xl bg-white/80 p-4">
 <div>
-<h2 className="text-2xl font-bold">Studiekeuze Quiz</h2>
-<p className="text-sm text-slate-500">Beantwoord alle 15 vragen voor je uitslag</p>
+    <h2 className="text-2xl font-bold text-slate-800">Studiekeuze Quiz</h2>
+    <p className="text-sm text-slate-600">Beantwoord alle 15 vragen voor je uitslag</p>
 </div>
 <ProgressBar value={progressValue} />
 </div>
@@ -906,12 +906,14 @@ export default function HBOStudiewijzer() {
 
                   variant="outline"
 
+                  className="border-cyan-200 bg-white text-slate-700 hover:bg-cyan-50"
+
                   onClick={() => (step === 0 ? setPage("home") : setStep((s) => s - 1))}
 >
 <ArrowLeft className="h-4 w-4" /> {step === 0 ? "Home" : "Vorige"}
 </Button>
  
-                <Button disabled={!canContinue} onClick={() => setStep((s) => s + 1)}>
+                <Button className="bg-linear-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-600 hover:to-blue-700" disabled={!canContinue} onClick={() => setStep((s) => s + 1)}>
 
                   Volgende <ArrowRight className="h-4 w-4" />
 </Button>
@@ -921,16 +923,16 @@ export default function HBOStudiewijzer() {
           ) : (
 <div>
 <div className="mb-6 flex items-center justify-between gap-4">
-<h3 className="text-3xl font-bold">Beste opleidingen voor jou</h3>
-<Button variant="outline" onClick={() => setPage("home")}>Terug naar home</Button>
+<h3 className="text-3xl font-bold text-slate-800">Beste opleidingen voor jou</h3>
+<Button variant="outline" className="border-cyan-200 bg-white text-slate-700 hover:bg-cyan-50" onClick={() => setPage("home")}>Terug naar home</Button>
 </div>
  
               <div className="grid gap-4 md:grid-cols-2">
 
                 {scoredStudies.slice(0, 3).map((study, index) => (
-<Card key={study.id} className="p-5">
+<Card key={study.id} className="border border-sky-100 bg-white/95 p-5 shadow-md shadow-cyan-100/40">
 <div className="mb-3 flex items-center justify-between">
-<Badge>#{index + 1} Match</Badge>
+<Badge className="bg-cyan-600">#{index + 1} Match</Badge>
 <span className="text-sm font-semibold text-slate-500">{study.score} pt</span>
 </div>
 <h4 className="text-lg font-semibold">{study.title}</h4>
@@ -942,10 +944,10 @@ export default function HBOStudiewijzer() {
 </div>
  
               <div className="mt-6 flex gap-3">
-<Button onClick={restartQuiz}>
+<Button className="bg-linear-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-600 hover:to-blue-700" onClick={restartQuiz}>
 <RefreshCcw className="h-4 w-4" /> Opnieuw doen
 </Button>
-<Button variant="outline" onClick={() => setPage("home")}>Home</Button>
+<Button variant="outline" className="border-cyan-200 bg-white text-slate-700 hover:bg-cyan-50" onClick={() => setPage("home")}>Home</Button>
 </div>
 </div>
 
